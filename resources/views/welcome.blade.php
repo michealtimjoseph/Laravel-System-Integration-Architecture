@@ -120,7 +120,9 @@
                 </div>
                 <div class="bg-[#fff2f2] dark:bg-[#1D0002] relative lg:-ml-px -mb-px lg:mb-0 rounded-t-lg lg:rounded-t-none lg:rounded-r-lg aspect-[335/376] lg:aspect-auto w-full lg:w-[438px] shrink-0 overflow-hidden">
                     {{-- Custom Logo --}}
-                    <img src="{{ asset('images/logo.jpg') }}" alt="My Logo" class="w-full max-w-none transition-all duration-750 opacity-100 translate-y-0 starting:opacity-0 starting:translate-y-6" />
+                    <img src="{{ asset('images/logo.jpg') }}" 
+                    alt="My Logo" 
+                    class="w-full max-w-none transition-all duration-750 opacity-100 translate-y-0 starting:opacity-0 starting:translate-y-6" />
 
                     {{-- Light Mode 12 SVG --}}
                     <svg class="w-[448px] max-w-none relative -mt-[4.9rem] -ml-8 lg:ml-0 lg:-mt-[6.6rem] dark:hidden" viewBox="0 0 440 376" fill="none" xmlns="http://www.w3.org/2000/svg">
