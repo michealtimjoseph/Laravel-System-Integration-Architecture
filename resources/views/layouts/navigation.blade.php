@@ -13,19 +13,19 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                    {{ __('Dashboard') }}
+                        {{ __('Dashboard') }}
                     </x-nav-link>
 
                     <x-nav-link href="{{ route('customers.index') }}" :active="request()->routeIs('customers.*')">
-                    {{ __('Customers') }}
+                        {{ __('Customers') }}
                     </x-nav-link>
 
                     <x-nav-link href="{{ route('products.index') }}" :active="request()->routeIs('products.*')">
-                    {{ __('Products') }}
+                        {{ __('Products') }}
                     </x-nav-link>
 
                     <x-nav-link href="{{ route('orders.index') }}" :active="request()->routeIs('orders.*')">
-                    {{ __('Orders') }}
+                        {{ __('Orders') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -36,9 +36,16 @@
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
                             <!-- Avatar -->
-                            <img src="{{ asset('images/user1.png') }}"
-                            alt="User Avatar"
-                            class="w-6 h-6 rounded-full object-cover mr-2">
+                            @if(Auth::user()->avatar)
+                                <img src="{{ asset('storage/' . Auth::user()->avatar) }}"
+                                     alt="User Avatar"
+                                     class="w-6 h-6 rounded-full object-cover mr-2">
+                            @else
+                                <img src="{{ asset('images/default-avatar.png') }}"
+                                     alt="Default Avatar"
+                                     class="w-6 h-6 rounded-full object-cover mr-2">
+                            @endif
+
                             <div>{{ Auth::user()->name }}</div>
 
                             <div class="ms-1">
@@ -90,9 +97,21 @@
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
-            <div class="px-4">
-                <div class="font-medium text-base text-gray-800 dark:text-gray-200">{{ Auth::user()->name }}</div>
-                <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+            <div class="px-4 flex items-center gap-2">
+                @if(Auth::user()->avatar)
+                    <img src="{{ asset('storage/' . Auth::user()->avatar) }}"
+                         alt="User Avatar"
+                         class="w-8 h-8 rounded-full object-cover">
+                @else
+                    <img src="{{ asset('images/default-avatar.png') }}"
+                         alt="Default Avatar"
+                         class="w-8 h-8 rounded-full object-cover">
+                @endif
+
+                <div>
+                    <div class="font-medium text-base text-gray-800 dark:text-gray-200">{{ Auth::user()->name }}</div>
+                    <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                </div>
             </div>
 
             <div class="mt-3 space-y-1">
